@@ -10,3 +10,5 @@ const quickSort = (unsortedArray) => {
 
     return [...quickSort(leftArray), pivot, ...quickSort(rightArray)];
 }
+
+//https://www.linkedin.com/in/djebby-firas/

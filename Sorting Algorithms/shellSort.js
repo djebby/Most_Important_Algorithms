@@ -18,3 +18,5 @@ function shellSort(unsortedArray){
 
     return sortedArray;
 }
+
+//https://www.linkedin.com/in/djebby-firas/
