@@ -51,9 +51,7 @@ const treeMinValueRecursive = (root) => {
     let minRight = treeMinValueRecursive(root.right);
     return Math.min(minLeft, root.val, minRight);
 }
-
-
-
+//-------------------------------------------------------------------
 let iterativeResult = treeMinValueIterative(a);
 let recursiveResult = treeMinValueRecursive(a);
 console.log("Iterative Result => ", iterativeResult);
