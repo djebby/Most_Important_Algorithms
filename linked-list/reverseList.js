@@ -26,15 +26,18 @@ const reverseListIterative = (head) => {
   return prev;
 }
 //-------------------------------------------------------------------------------
-const reverseListRecursive = (head, prev = null) => {
+const reverseListRecursive = (head, prev = null) => { 
     if(head === null) return prev;
     const next = head.next;
     head.next = prev;
     return reverseListRecursive(next, head);
 }
 //-------------------------------------------------------------------------------
-let iterativeResult = reverseListIterative(a);
-let recursiveResult = reverseListRecursive(a);
-console.log("Iterative Result => ",iterativeResult);
+// let iterativeResult = reverseListIterative(a);
+let recursiveResult = reverseListRecursive(a);//execute one approach in a time
+
+// console.log("Iterative Result => ",iterativeResult);
 console.log("Recursive Result => ",recursiveResult);
-//Return the new head of the reversed list: d
+
+/*Return the new head of the reversed list: d
+d --> c --> --> b --> a --> null */
