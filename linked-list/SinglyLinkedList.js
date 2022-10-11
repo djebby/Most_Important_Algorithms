@@ -1,6 +1,6 @@
-/* +----------------------------head node of the linked list
+/* +----------------------------head node of the singly linked list
    A --> B --> C --> D
-                     +----------------------------------tail node of the linked list
+                     +----------------------------------tail node of the singly linked list
 */
 
 
@@ -12,7 +12,7 @@ class Node {
 }
 
 
-class LinkedList {
+class SinglyLinkedList {
 
     constructor() {
         this.head = null;
@@ -52,6 +52,18 @@ class LinkedList {
         return true;
     }
 
+    insertAt(position, value) {
+        if(position < 0 || position > this.length) throw new Error('invalid position');
+        if(position === 0) return this.prepend(value);
+        if(position === this.length) return this.append(value);
+
+        const prevNode = this.get(position-1);
+        const newNode = new Node(value, prevNode.next);
+        prevNode.next = newNode;
+        this.length++;
+        return newNode;
+    }
+
     search(value) {
         if(!this.head) return undefined;
         let currentNode = this.head;
@@ -60,6 +72,24 @@ class LinkedList {
             currentNode = currentNode.next;
         }
         return undefined;
+    }
+
+    get(position) {
+        if(position < 0 || position >= this.length) return undefined;
+
+        let returnedNode = this.head;
+        for(let i = 1; i <= position; i++) {
+            returnedNode = returnedNode.next;
+        }
+
+        return returnedNode;
+    }
+
+    set(position, newValue) {
+        const node = this.get(position);
+        if(!node) throw new Error('invalid position');
+        node.value = newValue;
+        return node;
     }
 
     // return the last node (the tail) and delete it... like pop in arrays
@@ -99,7 +129,7 @@ class LinkedList {
         return firstNode;
     }
 
-    delete(value) {
+    deleteByValue(value) {
         if(!this.head) return 0;
 
         let deletionCounter = 0;
@@ -134,6 +164,17 @@ class LinkedList {
         return deletionCounter;
     }
 
+    deleteByPosition(position) {
+        if(position < 0 || position >= this.length) throw new Error('invalid position');
+        if(position === 0) return this.shifting();
+        if(position === this.length - 1) return this.popping();
+
+        const prevNode = this.get(position - 1);
+        const removedNode = prevNode.next;
+        prevNode.next = removedNode.next;
+        this.length--;
+        return removedNode;
+    }
 
     toArray() {
         if(!this.head) return [];
@@ -147,4 +188,32 @@ class LinkedList {
         }
         return nodeValues;
     }
+
+    toString() {
+        const linkedListValues = this.toArray();
+        let string = linkedListValues[0];
+        for(const value of linkedListValues.slice(1)) {
+            string += '-->'+value;
+        }
+        string += '-->null';
+        return string;
+    }
+
+    reverse() {
+        let node = this.head; // step 01 - save the original head of the linked-list
+        this.head = this.tail; // step 02 - switch the head node with the tail node and vice versa
+        this.tail = node;
+
+        let next; // should store the next node 
+        let prev = null; // should store the previous node
+        while (node !== null) { // step 03 - loop through all the nodes of our linked list and reverse the next pointer of every node...
+            next = node.next; // slid the next-node up
+            node.next = prev; // switch the pointer of the current node to be pointing to the prev node (we just reverse the pointer...)
+            prev = node; // slid the prev-node up
+            node = next; // slid the current-node up
+        }
+        return this;
+    }
 }
+
+
