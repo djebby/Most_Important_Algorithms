@@ -75,7 +75,8 @@ class SinglyLinkedList {
     }
 
     get(position) {
-        if(position < 0 || position >= this.length) return undefined;
+        if(position < 0 || position >= this.length || position === undefined || !Number.isInteger(position))
+            throw new Error('invalid position');
 
         let returnedNode = this.head;
         for(let i = 1; i <= position; i++) {
@@ -87,7 +88,6 @@ class SinglyLinkedList {
 
     set(position, newValue) {
         const node = this.get(position);
-        if(!node) throw new Error('invalid position');
         node.value = newValue;
         return node;
     }
@@ -191,7 +191,8 @@ class SinglyLinkedList {
 
     toString() {
         const linkedListValues = this.toArray();
-        let string = linkedListValues[0];
+        if(linkedListValues.length === 0) return 'length: 0 singly linked list is empty';
+        let string = 'length:'+this.length+ ' | ' +linkedListValues[0];
         for(const value of linkedListValues.slice(1)) {
             string += '-->'+value;
         }
@@ -215,5 +216,3 @@ class SinglyLinkedList {
         return this;
     }
 }
-
-
