@@ -42,4 +42,26 @@ class Graph {
     this.adjacencyList[firstVertexKey].delete(secondVertexKey);
     this.adjacencyList[secondVertexKey].delete(firstVertexKey);
   }
+  
+  depthFirstTraverse(startingVtxKey) {
+    if(!this.vertices[startingVtxKey])
+        throw new Error("key of the vertex does not exist!");
+    
+    let result = [], visitedVertices = {};
+
+    (function dfsRecursive(vtxKey, adjList) {
+        
+        if(!adjList[vtxKey]) return;
+
+        result.push(vtxKey);
+        visitedVertices[vtxKey] = true;
+
+        for(const neighbor of adjList[vtxKey])
+            if(!visitedVertices[neighbor])
+                dfsRecursive(neighbor, adjList);
+        
+    })(startingVtxKey, this.adjacencyList);
+
+    return result;
+  }
 }
