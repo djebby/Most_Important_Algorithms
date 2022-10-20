@@ -43,7 +43,7 @@ class Graph {
     this.adjacencyList[secondVertexKey].delete(firstVertexKey);
   }
   
-  depthFirstTraverse(startingVtxKey) {
+  depthFirstTraverseRecursively(startingVtxKey) {
     if(!this.vertices[startingVtxKey])
         throw new Error("key of the vertex does not exist!");
     
@@ -64,4 +64,47 @@ class Graph {
 
     return result;
   }
+
+  depthFirstTraverseIteratively(startingVtxKey) {
+    if(!this.vertices[startingVtxKey])
+        throw new Error("key of the vertex does not exist!");
+    
+    const stack = [startingVtxKey], visitedVertices = new Set(startingVtxKey), result = [];    
+
+    while(stack.length > 0) {
+      
+      const currentVtx = stack.pop();
+      result.push(currentVtx);
+      
+      for(const neighbor of this.adjacencyList[currentVtx]) {
+        if(!visitedVertices.has(neighbor)) {
+          stack.push(neighbor);
+          visitedVertices.add(neighbor);
+        }
+      }
+
+    }
+
+    return result;
+  }
+
+  breadthFirstTraverse(startingVtxKey) {
+    const queue = [startingVtxKey], visitedVertices = new Set(startingVtxKey), result = [];
+
+    while(queue.length > 0) {
+
+      const currentVtx = queue.shift();
+      result.push(currentVtx);
+
+      for(const neighbor of this.adjacencyList[currentVtx]) {
+        if(!visitedVertices.has(neighbor)) {
+          queue.push(neighbor);
+          visitedVertices.add(neighbor);
+        }
+      }
+    }
+
+    return result;
+  }
+
 }
