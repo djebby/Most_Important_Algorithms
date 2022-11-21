@@ -1,4 +1,4 @@
-function insertionSort(unsortedArray){
+function insertionSort(unsortedArray) {
     let sortedArray = unsortedArray.slice();
 
     for(let i=1; i<sortedArray.length; i++)
@@ -13,4 +13,4 @@ function insertionSort(unsortedArray){
 }
 
 
-//https://www.linkedin.com/in/djebby-firas/
+// https://www.linkedin.com/in/djebby-firas/

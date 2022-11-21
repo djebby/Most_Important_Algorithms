@@ -14,4 +14,4 @@ const quickSort = (array) => {
   return [...quickSort(lowerArray), pivot, ...quickSort(upperArray)];
 };
 
-//https://www.linkedin.com/in/djebby-firas/
+// https://www.linkedin.com/in/djebby-firas/

@@ -3,7 +3,7 @@ function selectionSort(unsortedArray){
 
     for(let i=0; i<sortedArray.length-1; i++)
         for(let j=i+1; j<sortedArray.length; j++)
-            if(sortedArray[j] > sortedArray[i])
+            if(sortedArray[j] < sortedArray[i])
                 [sortedArray[i], sortedArray[j]] = [sortedArray[j], sortedArray[i]];
         
     return sortedArray;
