@@ -9,9 +9,10 @@ class Solution:
         triplets = list()
 
         for i in range(len(nums)-2):
-            # we need to avoid any duplicate triplet
+            # the solution set must not contain duplicate triplets.
             if i > 0 and nums[i] == nums[i-1]:
                 continue
+            # find any two complement...
             l, r = i+1, len(nums)-1
             while l < r:
                 triplet_sum = nums[i] + nums[l] + nums[r]
@@ -21,8 +22,11 @@ class Solution:
                     r -= 1
                 else:
                     triplets.append([nums[i], nums[l], nums[r]])
+                    # the solution set must not contain duplicate triplets.
+                    l += 1
+                    while nums[l] == nums[l-1] and l < r:
+                        l += 1
                     r -= 1
-                    # we need to avoid any duplicate triplet
                     while nums[r] == nums[r+1] and l < r: 
                         r -= 1
 
