@@ -3,22 +3,22 @@
 from typing import List
 
 class Solution:
-    def generateParenthesis(self, n: int) -> List[str]:
-        
-        parenthesis = list()
-        
-        def decisionTree(stack = list(), opened = 0, closed = 0):
-            if len(stack) == 2*n: # opened == closed == n
-                parenthesis.append(''.join(stack))
-                return
-            if opened < n:
-                stack.append('(')
-                decisionTree(stack, opened+1, closed)
-                stack.pop()
-            if closed < opened:
-                stack.append(')')
-                decisionTree(stack, opened, closed+1)
-                stack.pop()
+	def generateParenthesis(self, n: int) -> List[str]:
+		
+		parentheses = list()
+		
+		def backtracking(stack = list(), opened = 0, closed = 0):
+			if len(stack) == 2*n: # opened == closed == n
+				parentheses.append(''.join(stack))
+				return
+			if opened < n:
+				stack.append('(')
+				backtracking(stack, opened+1, closed)
+				stack.pop()
+			if closed < opened:
+				stack.append(')')
+				backtracking(stack, opened, closed+1)
+				stack.pop()
 
-        decisionTree()
-        return parenthesis
+		backtracking()
+		return parentheses
