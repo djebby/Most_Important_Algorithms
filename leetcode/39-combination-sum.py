@@ -6,17 +6,17 @@ class Solution:
 	def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
 		combinations = list()
 
-		def backtracking(i, combination, curr_sum):
-			if curr_sum > target or i >= len(candidates):
+		def backtracking(index, _sum, combination):
+			if _sum > target:
 				return
-			elif curr_sum == target:
+			elif _sum == target:
 				combinations.append(combination.copy())
 				return
 
-			combination.append(candidates[i])
-			backtracking(i, combination, curr_sum + candidates[i])
-			combination.pop()
-			backtracking(i + 1, combination, curr_sum)
+			for i in range(index, len(candidates)):
+				combination.append(candidates[i])
+				backtracking(i, _sum + candidates[i], combination)
+				combination.pop()
 
 		backtracking(0, list(), 0)
 		return combinations
