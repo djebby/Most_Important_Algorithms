@@ -11,14 +11,14 @@ var findMedianSortedArrays = function(nums1, nums2) {
   }
 
   const TOTAL = nums1.length + nums2.length;
-  let half = Math.floor(TOTAL / 2);
+  const HALF = Math.floor(TOTAL / 2);
 
   let l = 0;
   let r = nums1.length - 1;
 
   while (true) {
     let i = Math.floor((l+r) / 2);
-    let j = half - i - 2;
+    let j = HALF - i - 2;
   
     nums1Left = i >= 0 ? nums1[i] : -Infinity;
     nums1Right = (i+1) < nums1.length ? nums1[i+1] : Infinity;
