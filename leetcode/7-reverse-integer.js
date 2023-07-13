@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/reverse-integer/ (top-interview-questions)
+// https://leetcode.com/problems/reverse-integer/ (top-interview-questions) (disliked)
 
 /**
  * @param {number} x
