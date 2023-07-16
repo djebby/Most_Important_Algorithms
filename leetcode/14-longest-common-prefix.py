@@ -1,4 +1,5 @@
 # https://leetcode.com/problems/longest-common-prefix/ (top-interview-questions)
+
 from typing import List
 
 def longestCommonPrefix(strs: List[str]) -> str:

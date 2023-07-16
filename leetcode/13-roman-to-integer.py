@@ -11,4 +11,5 @@ class Solution:
                 integer -= symbolValue[s[i]]
             else: 
                 integer += symbolValue[s[i]]
+
         return integer
