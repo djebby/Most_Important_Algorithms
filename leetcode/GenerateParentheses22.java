@@ -20,8 +20,8 @@ public class GenerateParentheses22 {
 		}
 
 		/**
-		 * we have two decission to make THE FIRST (and must be the first) is to add an opened parenthese
-		 * the second is to add a closed parenthese. but there is two condition:
+		 * we have two decission to make THE FIRST (and must be the first) is to try adding an opened parenthese
+		 * the second is to try adding a closed parenthese. but there is two condition:
 		 * we add an opened parenthese if opened < n
 		 * and we close if closed < opened
 		 */
