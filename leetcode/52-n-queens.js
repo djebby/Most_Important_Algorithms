@@ -16,7 +16,14 @@ var solveNQueens = function(n) {
 
   const backtracking = (row) => {
     if (row === n) {
-      boardsConfig.push([...board]);
+      // base case ( new valid board config found ) ...
+      const boardConfig = [];
+
+      for (const queenPlace of board) {
+        boardConfig.push('.'.repeat(queenPlace) + 'Q' + '.'.repeat(n-queenPlace-1));
+      }
+
+      boardsConfig.push(boardConfig);
       return;
     }
 
@@ -36,20 +43,8 @@ var solveNQueens = function(n) {
 
   backtracking(0);
   
-  return boardsConfigStringify(boardsConfig);
+  return boardsConfig;
 };
 
-const boardsConfigStringify = (boardsConfig) => {
-  if (boardsConfig.length === 0) return [];
 
-  const n = boardsConfig[0].length;
-  const stringifiedBoardsConfig = [];
-
-  for (const boardConfig of boardsConfig) {
-    stringifiedBoardsConfig.push(boardConfig.map(queenPlace => {
-      return '.'.repeat(queenPlace) + 'Q' + '.'.repeat(n-queenPlace-1);
-    }));
-  }
-
-  return stringifiedBoardsConfig;
-}
+console.log(solveNQueens(4));
