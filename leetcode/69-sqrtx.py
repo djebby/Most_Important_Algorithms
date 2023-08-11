@@ -5,7 +5,7 @@ from math import floor, sqrt
 class Solution:
     def mySqrt(self, x: int) -> int:
         
-        l = 0
+        l = 1
         r = x // 2
 
         nearest_square = 1 if x == 1 else 0
