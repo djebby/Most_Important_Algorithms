@@ -4,12 +4,14 @@ from typing import List
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        
+        max_profit = 0
+        min_price = prices[0] # minimum price seen so far
 
-        buy, sell, maxProfit = 0, 1, 0
-
-        while sell < len(prices):
-            if prices[buy] > prices[sell]: buy = sell
-            else: maxProfit = max(maxProfit, prices[sell] - prices[buy])
-            sell += 1
-
-        return maxProfit
+        for price in prices:
+            if price < min_price:
+                min_price = price
+            elif price > min_price: # there is a profit, see if he can be our maximum profit can gain until this day
+                max_profit = max(max_profit, (price - min_price))
+        
+        return max_profit
