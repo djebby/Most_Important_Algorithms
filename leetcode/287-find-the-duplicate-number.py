@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/find-the-duplicate-number/
+# https://leetcode.com/problems/find-the-duplicate-number/ (top-interview-questions)
 
 from typing import List
 
@@ -16,8 +16,3 @@ class Solution:
             tortoise2 = nums[tortoise2]
         
         return tortoise
-
-
-solution = Solution()
-print(solution.findDuplicate([1,3,4,2,2])) # output: 2
-print(solution.findDuplicate([3,1,3,4,2])) # output: 3
