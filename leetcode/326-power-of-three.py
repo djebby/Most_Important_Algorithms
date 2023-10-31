@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/power-of-three/
+# https://leetcode.com/problems/power-of-three/ (top-interview-questions)
 
 class Solution:
     def isPowerOfThree(self, n: int) -> bool:
