@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/timeout-cancellation/
+// https://leetcode.com/problems/timeout-cancellation/ (30-day-javascript-challenge)
 
 /**
  * @param {Function} fn
