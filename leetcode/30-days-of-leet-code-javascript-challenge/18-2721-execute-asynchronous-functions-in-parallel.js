@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/execute-asynchronous-functions-in-parallel/
+// https://leetcode.com/problems/execute-asynchronous-functions-in-parallel/ (30-day-javascript-challenge)
 
 /**
  * @param {Array<Function>} functions
