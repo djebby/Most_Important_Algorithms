@@ -11,7 +11,7 @@ var openLock = function(deadends, target) {
   const source = 0;
   const deadendsVtx = new Set(deadends.map(deadend => Number(deadend)));
   // base cases
-  if (deadendsVtx.has(source) || getNeighboors(source, deadendsVtx).length === 0 || getNeighboors(target, deadendsVtx).length === 0) {
+  if (deadendsVtx.has(source) || getNeighbors(source, deadendsVtx).length === 0 || getNeighbors(target, deadendsVtx).length === 0) {
     return -1;
   }
   const queue = [source];
@@ -23,7 +23,7 @@ var openLock = function(deadends, target) {
     while (layerLength > 0) {
       const node = queue.shift();
       if (node === target) return length;
-      const neighboors = getNeighboors(node, deadendsVtx);
+      const neighboors = getNeighbors(node, deadendsVtx);
       for (const neighboor of neighboors) {
         if (!visited.has(neighboor)) {
           visited.add(neighboor);
@@ -40,7 +40,7 @@ var openLock = function(deadends, target) {
 };
 
 
-const getNeighboors = (vertex, deadendSet) => {
+const getNeighbors = (vertex, deadendSet) => {
   const digits = [
     Math.floor(vertex / 1000),
     Math.floor((vertex % 1000) / 100),

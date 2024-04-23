@@ -13,7 +13,7 @@ class Solution:
             deadends_vtx.add(int(deadend))
 
         # base cases 
-        if source in deadends_vtx or len(self.get_neighboors(source, deadends_vtx)) == 0 or len(self.get_neighboors(target, deadends_vtx)) == 0:
+        if source in deadends_vtx or len(self.get_neighbors(source, deadends_vtx)) == 0 or len(self.get_neighbors(target, deadends_vtx)) == 0:
             return -1
 
         queue = deque([source])
@@ -27,8 +27,8 @@ class Solution:
                 node = queue.popleft()
                 if node == target:
                     return length
-                neighboors = self.get_neighboors(node, deadends_vtx)
-                for neighboor in neighboors:
+                neighbors = self.get_neighbors(node, deadends_vtx)
+                for neighboor in neighbors:
                     if neighboor not in visited:
                         visited.add(neighboor)
                         queue.append(neighboor)
@@ -39,7 +39,7 @@ class Solution:
         
         return -1
     
-    def get_neighboors(self, vertex, deadend_set):
+    def get_neighbors(self, vertex, deadend_set):
         digits = [
             int(vertex / 1000),
             int((vertex % 1000) / 100),
@@ -47,7 +47,7 @@ class Solution:
             vertex % 10
         ]
 
-        neighboors = []
+        neighbors = []
         for i in range(4):
             up = digits[:]
             down = digits[:]
@@ -62,10 +62,10 @@ class Solution:
                 up[i] -= 1
                 down[i] += 1
             
-            up_neighboor = (1000 * up[0] + 100 * up[1] + 10 * up[2] + up[3])
-            down_neighboor = (1000 * down[0] + 100 * down[1] + 10 * down[2] + down[3])
+            up_neighbor = (1000 * up[0] + 100 * up[1] + 10 * up[2] + up[3])
+            down_neighbor = (1000 * down[0] + 100 * down[1] + 10 * down[2] + down[3])
 
-            if up_neighboor not in deadend_set: neighboors.append(up_neighboor)
-            if down_neighboor not in deadend_set: neighboors.append(down_neighboor)
+            if up_neighbor not in deadend_set: neighbors.append(up_neighbor)
+            if down_neighbor not in deadend_set: neighbors.append(down_neighbor)
         
-        return neighboors
+        return neighbors
