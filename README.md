@@ -1,6 +1,7 @@
 ## usually i use this repository for interview preparation of different algorithms and data structures and i see it will be nice if i share with other people
 
 ![leetcode-djebby-100-days-badge-2023](./leetcode/0-leetcode-djebby-100-days-badge-2023.png)
+![leetcode-djebby-100-days-badge-2024](./leetcode/0-leetcode-djebby-100-days-badge-2024.png)
 
 ## Clean Code - Languages Style Guides
 
